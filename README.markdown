@@ -1,4 +1,39 @@
-# Faster Development of CodeIgniter Apps
+# Dentons - Modular HMVC app framework on Centos7/LAMP Vagrant box VM with composer
+
+## Setup Info
+- Clone the git repo to your local machine
+- Edit the Vagrantfile "synced_folder path" to reflect your local development directory
+- Edit your local /etc/hosts to add the VM IP and domain
+	- $ sudo vim /etc/hosts
+- Start the VM (Virtual Machine)
+	- $ vagrant up	
+- SSH into the VM
+	- $ vagrant ssh
+- Add new site with script
+	- $ siteadd -v sitename
+		- nb. can add -w or -m options to install wordpress or magento respectively
+		- for help: $ siteadd -h
+- Add VM IP (can be found in Vagrantfile) to /etc/httpd/conf.d/phpMyAdmin.conf to enable phpMyAdmin access via yourdomain.com/phpmyadmin
+	- $ sudo vim /etc/httpd/conf.d/phpMyAdmin.conf
+- Restart the server so changes take effect
+	- $ service httpd restart 
+- Create required DB & DB users via CLI
+	- $ mysql -u username -p
+	- mysql-> (see .mysql_history file for eg.)
+	- mysql->	CREATE DATABASE db_name;
+	- mysql->	USE db_name;
+	- mysql->	GRANT ALL ON db_name.* TO 'username'@'localhost';
+	- mysql->	\q
+
+## General Info
+- [Trello Board - Vagrant Flow](https://trello.com/b/IqyFyvfn/vagrant-flow)
+- [Vagrant](https://www.vagrantup.com/)
+- [VirtualBox](https://www.virtualbox.org/)
+- [Composer](https://getcomposer.org/)
+- [CodeIgniter](https://codeigniter.com/)
+- [Bonfire](http://cibonfire.com/)
+
+# Bonfire - Faster Development of CodeIgniter Apps
 
 <div style="float: right; margin: 0 20px 20px 0">
 	<a href='http://www.pledgie.com/campaigns/15326'><img alt='Click here to lend your support to: Bonfire - faster CodeIgniter development and make a donation at www.pledgie.com !' src='http://pledgie.com/campaigns/15326.png?skin_name=chrome' border='0' /></a>
